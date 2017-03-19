@@ -1,0 +1,14 @@
+<form>
+  <div class="form-group">
+    <label for="selectedValue">Select</label>
+    <select id="selectedValue" class="form-control" [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let choice of choices" value="{{choice}}">{{choice}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="compareWith">Compare with</label>
+    <select id="compareWith" multiple class="form-control" [(ngModel)]="compareWith" (ngModelChange)="onChangeCompare($event)" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let choice of filteredChoices" value="{{choice}}">{{choice}}</option>
+    </select>
+  </div>
+</form>

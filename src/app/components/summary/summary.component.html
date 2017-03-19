@@ -1,0 +1,33 @@
+<h1>{{data.name}} ({{data.symbol}})</h1>
+
+<h2>
+  {{data.lastTradePriceOnly}}
+  <small [ngClass]="data.change > 0 ? 'text-success' : 'text-danger'">{{data.change}} ({{data.percentChange}})</small>
+</h2>
+
+<table class="table table-condensed">
+  <tr>
+    <td>Last trade</td>
+    <td>{{data.lastTradeDate}}</td>
+  </tr>
+  <tr>
+    <td>Capitalization</td>
+    <td>{{data.marketCapitalization}}</td>
+  </tr>
+  <tr>
+    <td>Currency</td>
+    <td>{{data.currency}}</td>
+  </tr>
+</table>
+
+
+<div *ngIf="stockInfo"class="alert alert-info" role="alert">
+  <button type="button" class="close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <strong>Date</strong>: {{stockInfo.date | date: 'dd/MM/yyyy'}}<br><br>
+  <strong>Volume</strong>: {{stockInfo.volume}}<br>
+  <strong>High</strong>: {{stockInfo.high | currency:'USD':true:'1.2-2'}}<br>
+  <strong>Low</strong>: {{stockInfo.low | currency:'USD':true:'1.2-2'}}
+</div>

@@ -1,0 +1,45 @@
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
+    <thead>
+      <tr>
+          <th>
+              <mfDefaultSorter by="date">Date</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="volume">Volume</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="open">Open</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="high">High</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="low">Low</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="close">Close</mfDefaultSorter>
+          </th>
+          <th>
+              <mfDefaultSorter by="adj_close">Adj. Close</mfDefaultSorter>
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mf.data">
+          <td>{{item.date | date: 'dd/MM/yyyy'}}</td>
+          <td>{{item.volume}}</td>
+          <td>{{item.open | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{item.high | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{item.low | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{item.close | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{item.adj_close | currency:'USD':true:'1.2-2'}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+          <td colspan="7">
+              <mfBootstrapPaginator ></mfBootstrapPaginator>
+          </td>
+      </tr>
+    </tfoot>
+</table>
